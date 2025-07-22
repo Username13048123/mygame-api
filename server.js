@@ -15,7 +15,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-  const { username, password } = req.body;
+  console.log("Incoming registration:", req.body);
+    const { username, password } = req.body;
   if (users.find(user => user.username === username)) {
     return res.json({ success: false, message: "Username already exists" });
   }
