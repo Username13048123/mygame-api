@@ -18,19 +18,21 @@ app.post('/register', (req, res) => {
   console.log("Incoming registration:", req.body);
     const { username, password } = req.body;
   if (users.find(user => user.username === username)) {
-    return res.json({ success: false, message: "Username already exists" });
+    return res.json({ success: "false", message: "Username already exists" });
   }
   users.push({ username, password });
-  return res.json({ success: true, message: "Registered successfully" });
+  return res.json({ success: "true", message: "Registered successfully" });
+
 });
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = users.find(u => u.username === username && u.password === password);
   if (user) {
-    return res.json({ success: true, message: "Login successful" });
+    return res.json({ success: "true", message: "Login successfully" });
+
   } else {
-    return res.json({ success: false, message: "Invalid credentials" });
+    return res.json({ success: "false", message: "Invalid credentials" });
   }
 });
 
